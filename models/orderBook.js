@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
 
-const tradeSchema = new mongoose.Schema({
-    BuyOrderId: {},
-    SellOrderId: {},
-    CreatedDateTime: {},
-    Price: {},
-    Quantity: {},
+const orderBookSchema = new mongoose.Schema({
+    BuyOrders: {},
+    SellOrders: {}
 });
 
-module.exports = mongoose.model('Trade', tradeSchema);
+module.exports = mongoose.model('OrderBook', orderBookSchema);
