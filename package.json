@@ -1,0 +1,28 @@
+{
+  "name": "levi9-orderbook-hackathon-entry",
+  "version": "1.0.0",
+  "description": "Levi9 - 5 Dana u Oblacima (5 Days in the Clouds) Hackathon Entry Challenge. Full Stack Crypto Order Book Application.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app",
+    "prod": "SET NODE_ENV=production& nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielKolocka/Levi9-OrderBook-Hackathon-Entry.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielKolocka/Levi9-OrderBook-Hackathon-Entry/issues"
+  },
+  "homepage": "https://github.com/DanielKolocka/Levi9-OrderBook-Hackathon-Entry#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.2",
+    "node": "^19.1.0",
+    "nodemon": "^2.0.20"
+  }
+}
