@@ -1,12 +1,13 @@
+const { ObjectID } = require('bson');
 const mongoose = require('mongoose');
 
 const tradeSchema = new mongoose.Schema({
     BuyOrderId: {
-        type: String,
+        type: ObjectID,
         required: true
     },
     SellOrderId: {
-        type: String,
+        type: ObjectID,
         required: true
     },
     CreatedDateTime: {

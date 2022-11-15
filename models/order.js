@@ -1,15 +1,19 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-    CurrencyPair: {
-        type: String, //schema.pre to fix this to BTCUSD
-        required: [true, 'Please enter Currency Pair'],
+    id: {
+        type: String,
+        required: [true, 'Please add order ID']
     },
-    CreatedDataTime: {
+    createdDataTime: {
         type: Date,
         default: Date.now
     },
-    Type: {
+    currencyPair: {
+        type: String, //schema.pre to fix this to BTCUSD
+        // required: [true, 'Please enter Currency Pair'],
+    },
+    type: {
         type: String,
         required: [true, 'Please select order type.'],
         enum: {
@@ -20,26 +24,28 @@ const orderSchema = new mongoose.Schema({
             message: 'Please choose BUY or SELL.'
         }
     },
-    Price: {
+    price: {
         type: Number,
         required: [true, 'Please enter trade price (2 decimals precision).']
     },
-    Quantity: {
+    quantity: {
         type: Number,
         required: [true, 'Please enter trade quantity (2 decimals precision)']
     },
-    FilledQuantity: {
+    filledQuantity: {
         type: Number,
         default: 0
     },
-    Status: {
+    orderStatus: {
         type: String,
         default: 'OPEN'
     },
-    Trades: {
+    trades: {
         type: [Object]
     },
-});
+},
+    { versionKey: false }
+);
 
 orderSchema.pre('save', function (next) {
     this.CurrencyPair = 'BTCUSD';
