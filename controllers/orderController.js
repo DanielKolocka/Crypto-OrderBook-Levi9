@@ -36,8 +36,25 @@ exports.getOrder = async (req, res, next) => {
 
 // Get the orderbook => /orderbook
 exports.getOrderBook = async (req, res, next) => {
-    const buyOrders = await Order.find({ type: 'BUY' }, 'price quantity');
-    const sellOrders = await Order.find({ type: 'SELL' }, 'price quantity');
+    // const buyOrders = await Order.find({ type: 'BUY' }, 'price quantity');
+    const buyOrders = await Order.aggregate(
+        [
+            { $match: { 'type': 'BUY' } },
+            { $group: { _id: '$price', quantity: { $sum: '$quantity' } } },
+            { $sort: { price: 1 } }
+        ]
+    );
+
+    const sellOrders = await Order.aggregate(
+        [
+            { $match: { 'type': 'SELL' } },
+            { $group: { _id: '$price', quantity: { $sum: '$quantity' } } },
+            { $sort: { price: -1 } }
+        ]
+    );
+    // const sellOrders = await Order.find({ type: 'SELL' }, 'price quantity').sort({ price: -1 });
+
+    // console.log(buyOrders[0]['price']);
 
     res.status(200).json({
         buyOrders,
