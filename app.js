@@ -14,7 +14,7 @@ app.use(express.json());
 //Import routes
 const orders = require('./routes/order');
 
-app.use('/api/v1', orders);
+app.use('/', orders);
 
 const PORT = process.env.PORT;
 const server = app.listen(PORT, () => {

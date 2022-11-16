@@ -5,7 +5,7 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please add order ID']
     },
-    createdDataTime: {
+    createdDateTime: {
         type: Date,
         default: Date.now
     },
