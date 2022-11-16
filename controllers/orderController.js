@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose');
 const Order = require('../models/order');
 const Trade = require('../models/trade');
 
@@ -155,4 +156,13 @@ exports.getOrderBook = async (req, res, next) => {
 }
 
 // Delete all orders => /order/all
+// exports.deleteOrderBook = async (req, res, next) => {
+//     orderbook.orders.drop(function () {
+//         console.log('Order collection dropped');
+//     });
+//     orderbook.trades.drop(function () {
+//         console.log('Order collection dropped');
+//     });
 
+//     res.status(200);
+// }
